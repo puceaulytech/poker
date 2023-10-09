@@ -1,18 +1,20 @@
 plugins {
-    id 'java'
+    id 'application'
 }
 
 group = 'com.github.pauvritech'
 version = '1.0-SNAPSHOT'
 
-jar {
-    manifest {
-        attributes('Main-Class': 'com.github.pauvritech.poker.Main')
-    }
-}
-
 repositories {
     mavenCentral()
+}
+
+application {
+    mainClass = 'com.github.pauvritech.poker.Main'
+}
+
+run {
+    standardInput = System.in
 }
 
 dependencies {
