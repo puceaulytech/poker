@@ -13,7 +13,10 @@ public class Main {
     public static List<Card> readPlayerCards(BufferedReader reader) throws IOException {
         System.out.print("Cards? ");
 
-        String[] cardsStr = reader.readLine().split(" ");
+        String line = reader.readLine();
+        if (line == null) System.exit(0);
+
+        String[] cardsStr = line.split(" ");
 
         return Arrays.stream(cardsStr).map(Card::fromString).toList();
     }
