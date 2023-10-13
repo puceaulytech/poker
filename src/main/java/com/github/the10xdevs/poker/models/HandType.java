@@ -16,7 +16,9 @@ public enum HandType {
         this.score = score;
     }
 
-    public int getScore() { return this.score; }
+    public int getScore() {
+        return this.score;
+    }
 
     @Override
     public String toString() {

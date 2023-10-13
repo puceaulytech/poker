@@ -18,6 +18,7 @@ public class Card {
 
     /**
      * Compute the best hand possible out of multiples cards
+     *
      * @param cards The cards the player has
      * @return The best hand
      */
@@ -54,6 +55,20 @@ public class Card {
         Rank rank = Rank.fromString(String.valueOf(repr.charAt(0)));
         Suit suit = Suit.fromString(repr.substring(1));
         return new Card(suit, rank);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Card other) {
+            return this.rank == other.rank && this.suit == other.suit;
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(suit, rank);
     }
 
     @Override

@@ -46,6 +46,19 @@ public class Algorithms {
         return occurrences;
     }
 
+    /**
+     * Check if a List has duplicates
+     *
+     * @param arr List to check
+     * @param <T> Element type
+     * @return true if the list has duplicates
+     */
+    public static <T> boolean hasDuplicates(List<T> arr) {
+        Set<T> set = new HashSet<>(arr);
+
+        return set.size() < arr.size();
+    }
+
     private Algorithms() {
         throw new IllegalStateException("Utility class");
     }
