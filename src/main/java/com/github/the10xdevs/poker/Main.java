@@ -1,7 +1,7 @@
-package com.github.pauvritech.poker;
+package com.github.the10xdevs.poker;
 
-import com.github.pauvritech.poker.models.Card;
-import com.github.pauvritech.poker.models.Hand;
+import com.github.the10xdevs.poker.models.Card;
+import com.github.the10xdevs.poker.models.Hand;
 
 import java.io.BufferedReader;
 import java.io.IOException;

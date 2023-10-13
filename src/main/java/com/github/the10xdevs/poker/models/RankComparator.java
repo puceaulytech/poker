@@ -1,4 +1,4 @@
-package com.github.pauvritech.poker.models;
+package com.github.the10xdevs.poker.models;
 
 import java.util.Comparator;
 

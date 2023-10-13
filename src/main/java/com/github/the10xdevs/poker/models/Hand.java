@@ -1,4 +1,4 @@
-package com.github.pauvritech.poker.models;
+package com.github.the10xdevs.poker.models;
 
 public class Hand implements Comparable<Hand> {
     private final Rank highestRank;

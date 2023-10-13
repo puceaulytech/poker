@@ -1,4 +1,4 @@
-package com.github.pauvritech.poker.utils;
+package com.github.the10xdevs.poker.utils;
 
 import org.junit.jupiter.api.Test;
 

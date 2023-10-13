@@ -1,6 +1,6 @@
-package com.github.pauvritech.poker.models;
+package com.github.the10xdevs.poker.models;
 
-import com.github.pauvritech.poker.utils.Algorithms;
+import com.github.the10xdevs.poker.utils.Algorithms;
 
 import java.util.*;
 

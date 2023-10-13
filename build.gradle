@@ -2,7 +2,7 @@ plugins {
     id 'application'
 }
 
-group = 'com.github.pauvritech'
+group = 'com.github.the10xdevs'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -10,7 +10,7 @@ repositories {
 }
 
 application {
-    mainClass = 'com.github.pauvritech.poker.Main'
+    mainClass = 'com.github.the10xdevs.poker.Main'
 }
 
 run {

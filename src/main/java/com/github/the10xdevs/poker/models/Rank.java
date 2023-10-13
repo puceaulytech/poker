@@ -1,4 +1,4 @@
-package com.github.pauvritech.poker.models;
+package com.github.the10xdevs.poker.models;
 
 /**
  * Represents the rank of a card.

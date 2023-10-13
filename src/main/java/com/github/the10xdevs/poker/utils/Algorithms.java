@@ -1,4 +1,4 @@
-package com.github.pauvritech.poker.utils;
+package com.github.the10xdevs.poker.utils;
 
 import java.util.*;
 import java.util.stream.Collectors;
