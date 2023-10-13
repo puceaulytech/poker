@@ -19,6 +19,7 @@ public class Main {
 
             String line = reader.readLine();
             if (line == null) System.exit(0);
+            if (line.isEmpty()) continue;
 
             String[] cardsStr = line.split("\\s+");
 
