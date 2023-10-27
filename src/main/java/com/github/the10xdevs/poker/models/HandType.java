@@ -8,7 +8,11 @@ public enum HandType {
     /**
      * Two cards with the same value
      */
-    PAIR(1);
+    PAIR(1),
+    /**
+     * Three cards with the same value
+     */
+    THREE_OF_A_KIND(2);
 
     private final int score;
 
@@ -25,6 +29,7 @@ public enum HandType {
         return switch (this) {
             case HIGH_CARD -> "carte haute";
             case PAIR -> "paire";
+            case THREE_OF_A_KIND -> "brelan";
         };
     }
 }

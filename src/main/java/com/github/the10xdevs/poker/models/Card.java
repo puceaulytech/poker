@@ -26,9 +26,15 @@ public class Card {
         List<Rank> ranks = cards.stream().map(Card::getRank).toList();
         Map<Integer, Set<Rank>> rankOccurrences = Algorithms.getOccurrences(ranks);
 
+        // Three of a kind
+        Set<Rank> threes = rankOccurrences.get(3);
+        if (threes != null) {
+            Rank bestThree = Collections.max(threes, RankComparator.STRONG_ACE);
+            return new Hand(HandType.THREE_OF_A_KIND, bestThree);
+        }
+
         // Pairs
         Set<Rank> pairs = rankOccurrences.get(2);
-
         if (pairs != null) {
             Rank bestPair = Collections.max(pairs, RankComparator.STRONG_ACE);
             return new Hand(HandType.PAIR, bestPair);
