@@ -7,6 +7,7 @@ import com.github.the10xdevs.poker.utils.Algorithms;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,11 +31,6 @@ public class Main {
                 continue;
             }
 
-            if (Algorithms.hasDuplicates(cards)) {
-                System.out.println("Duplicate cards found");
-                continue;
-            }
-
             break;
         }
 
@@ -46,6 +42,15 @@ public class Main {
 
         List<Card> firstPlayerCards = readPlayerCards("Joueur 1? ", reader);
         List<Card> secondPlayerCards = readPlayerCards("Joueur 2? ", reader);
+
+        List<Card> allCards = new ArrayList<>();
+        allCards.addAll(firstPlayerCards);
+        allCards.addAll(secondPlayerCards);
+
+        if (Algorithms.hasDuplicates(allCards)) {
+            System.out.println("Duplicate cards found");
+            return;
+        }
 
         Hand firstPlayerBestHand = Card.computeBestHand(firstPlayerCards);
         Hand secondPlayerBestHand = Card.computeBestHand(secondPlayerCards);
