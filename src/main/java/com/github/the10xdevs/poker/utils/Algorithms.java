@@ -22,7 +22,7 @@ public class Algorithms {
      * @param <T> The type of the objects
      * @return The occurrences Map
      */
-    public static <T> Map<Integer, Set<T>> getOccurrences(List<T> arr) {
+    public static <T> Map<Integer, Set<T>> getOccurrences(Collection<T> arr) {
         // This hashmap maps each object to its number of occurrences
         HashMap<T, Integer> objectToOccurrences = new HashMap<>();
 
@@ -53,7 +53,7 @@ public class Algorithms {
      * @param <T> Element type
      * @return true if the list has duplicates
      */
-    public static <T> boolean hasDuplicates(List<T> arr) {
+    public static <T> boolean hasDuplicates(Collection<T> arr) {
         Set<T> set = new HashSet<>(arr);
 
         return set.size() < arr.size();
