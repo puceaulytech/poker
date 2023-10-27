@@ -29,6 +29,16 @@ class CardTest {
     }
 
     @Test
+    void computeBestHandDoublePairs() {
+        List<Card> cards = Arrays.asList(new Card(Suit.DIAMOND, Rank.KING), new Card(Suit.SPADE, Rank.KING), new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.DIAMOND, Rank.FIVE));
+
+        Hand bestHand = Card.computeBestHand(cards);
+
+        assertEquals(HandType.DOUBLE_PAIR, bestHand.getType());
+        assertEquals(Rank.KING, bestHand.getHighestRank());
+    }
+
+    @Test
     void computeBestHandPairs() {
         List<Card> cards = Arrays.asList(new Card(Suit.DIAMOND, Rank.KING), new Card(Suit.SPADE, Rank.KING), new Card(Suit.CLUB, Rank.FIVE));
 

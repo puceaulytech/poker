@@ -10,6 +10,10 @@ public enum HandType {
      */
     PAIR(1),
     /**
+     * Two different pairs
+     */
+    DOUBLE_PAIR(2),
+    /**
      * Three cards with the same value
      */
     THREE_OF_A_KIND(3),
@@ -33,6 +37,7 @@ public enum HandType {
         return switch (this) {
             case HIGH_CARD -> "carte haute";
             case PAIR -> "paire";
+            case DOUBLE_PAIR -> "double paire";
             case THREE_OF_A_KIND -> "brelan";
             case FOUR_OF_A_KIND -> "carré";
         };
