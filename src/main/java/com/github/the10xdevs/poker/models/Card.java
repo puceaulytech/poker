@@ -22,35 +22,7 @@ public class Card {
      * @param cards The cards the player has
      * @return The best hand
      */
-    public static Hand computeBestHand(List<Card> cards) {
-        List<Rank> ranks = cards.stream().map(Card::getRank).toList();
-        Map<Integer, Set<Rank>> rankOccurrences = Algorithms.getOccurrences(ranks);
 
-        // Four of a kind
-        Set<Rank> fours = rankOccurrences.get(4);
-        if (fours != null) {
-            Rank bestFour = Collections.max(fours, RankComparator.STRONG_ACE);
-            return new Hand(HandType.FOUR_OF_A_KIND, bestFour);
-        }
-
-        // Three of a kind
-        Set<Rank> threes = rankOccurrences.get(3);
-        if (threes != null) {
-            Rank bestThree = Collections.max(threes, RankComparator.STRONG_ACE);
-            return new Hand(HandType.THREE_OF_A_KIND, bestThree);
-        }
-
-        // Pairs and double pairs
-        Set<Rank> pairs = rankOccurrences.get(2);
-        if (pairs != null) {
-            Rank bestPair = Collections.max(pairs, RankComparator.STRONG_ACE);
-            return new Hand(pairs.size() >= 2 ? HandType.DOUBLE_PAIR : HandType.PAIR, bestPair);
-        }
-
-        // Highest card
-        Rank highestRank = Collections.max(ranks, RankComparator.STRONG_ACE);
-        return new Hand(HandType.HIGH_CARD, highestRank);
-    }
 
     public static Card fromString(String repr) {
         if (!Character.isDigit(repr.charAt(0))) {
