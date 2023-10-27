@@ -12,7 +12,11 @@ public enum HandType {
     /**
      * Three cards with the same value
      */
-    THREE_OF_A_KIND(2);
+    THREE_OF_A_KIND(3),
+    /**
+     * Four cards with the same value
+     */
+    FOUR_OF_A_KIND(7);
 
     private final int score;
 
@@ -30,6 +34,7 @@ public enum HandType {
             case HIGH_CARD -> "carte haute";
             case PAIR -> "paire";
             case THREE_OF_A_KIND -> "brelan";
+            case FOUR_OF_A_KIND -> "carré";
         };
     }
 }

@@ -9,6 +9,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CardTest {
     @Test
+    void computeBestHandFours() {
+        List<Card> cards = Arrays.asList(new Card(Suit.DIAMOND, Rank.KING), new Card(Suit.SPADE, Rank.KING), new Card(Suit.CLUB, Rank.KING), new Card(Suit.HEART, Rank.KING));
+
+        Hand bestHand = Card.computeBestHand(cards);
+
+        assertEquals(HandType.FOUR_OF_A_KIND, bestHand.getType());
+        assertEquals(Rank.KING, bestHand.getHighestRank());
+    }
+
+    @Test
     void computeBestHandThrees() {
         List<Card> cards = Arrays.asList(new Card(Suit.DIAMOND, Rank.KING), new Card(Suit.SPADE, Rank.KING), new Card(Suit.CLUB, Rank.KING));
 
