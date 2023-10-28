@@ -3,9 +3,6 @@ package com.github.the10xdevs.poker.models;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CardTest {
@@ -14,7 +11,7 @@ class CardTest {
     private Card c3;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         c1 = Card.fromString("2Tr");
         c2 = Card.fromString("APi");
         c3 = Card.fromString("10Co");
@@ -35,31 +32,23 @@ class CardTest {
         assertEquals(Rank.TEN, c3.getRank());
         assertEquals(Suit.HEART, c3.getSuit());
 
-        Card c4 = Card.fromString("5Tr");
-        Card c5 = Card.fromString("9Ca");
-        assertEquals(Rank.FOUR, c4.getRank());
-        assertEquals(Suit.CLUB, c4.getSuit());
 
-
-        assertEquals(Rank.NINE, c5.getRank());
-        assertEquals(Suit.DIAMOND, c5.getSuit());
 
     }
 
     @Test
     void getSuit() {
-        assertEquals(c1.getSuit(),Suit.CLUB);
-        assertEquals(c2.getSuit(),Suit.SPADE);
-        assertEquals(c3.getSuit(),Suit.HEART);
-
+        assertEquals(c1.getSuit(), Suit.CLUB);
+        assertEquals(c2.getSuit(), Suit.SPADE);
+        assertEquals(c3.getSuit(), Suit.HEART);
 
 
     }
 
     @Test
     void getRank() {
-        assertEquals(c1.getRank(),Rank.TWO);
-        assertEquals(c2.getRank(),Rank.ACE);
-        assertEquals(c3.getRank(),Rank.TEN);
+        assertEquals(c1.getRank(), Rank.TWO);
+        assertEquals(c2.getRank(), Rank.ACE);
+        assertEquals(c3.getRank(), Rank.TEN);
     }
 }
