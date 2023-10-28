@@ -18,7 +18,7 @@ public class Card {
 
     /**
      * Compute the best hand possible out of multiples cards
-     * @param  repr The cards the player has 
+     * @param  repr The cards the player has
      * @return The best hand
      */
 
