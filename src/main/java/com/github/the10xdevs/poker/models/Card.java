@@ -1,8 +1,6 @@
 package com.github.the10xdevs.poker.models;
 
-import com.github.the10xdevs.poker.utils.Algorithms;
-
-import java.util.*;
+import java.util.Objects;
 
 /**
  * A playing card
@@ -18,7 +16,8 @@ public class Card {
 
     /**
      * Compute the best hand possible out of multiples cards
-     * @param  repr The cards the player has
+     *
+     * @param repr The cards the player has
      * @return The best hand
      */
 
