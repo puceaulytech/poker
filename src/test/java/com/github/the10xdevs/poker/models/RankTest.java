@@ -26,13 +26,13 @@ class RankTest {
 
         Rank rank6 = Rank.fromString("10");
         assertEquals(Rank.TEN, rank6);
+
+        assertThrows(IllegalStateException.class, () -> Rank.fromString("Invalid"));
     }
 
     @Test
     void testFromStringInvalid() {
-        assertThrows(IllegalStateException.class, () -> {
-            Rank.fromString("Invalid");
-        });
+        assertThrows(IllegalStateException.class, () -> Rank.fromString("Invalid"));
     }
 
     @Test
@@ -52,7 +52,52 @@ class RankTest {
         String str5 = Rank.TWO.toString();
         assertEquals("2", str5);
 
-        String str6 = Rank.TEN.toString();
-        assertEquals("10", str6);
+        String str6 = Rank.THREE.toString();
+        assertEquals("3", str6);
+
+        String str10 = Rank.FOUR.toString();
+        assertEquals("4", str10);
+
+        String str7 = Rank.FIVE.toString();
+        assertEquals("5", str7);
+
+        String str8 = Rank.SIX.toString();
+        assertEquals("6", str8);
+
+        String str9 = Rank.TEN.toString();
+        assertEquals("10", str9);
+
+        String str11 = Rank.SEVEN.toString();
+        assertEquals("7", str11);
+
+        String str12 = Rank.EIGHT.toString();
+        assertEquals("8", str12);
+
+        String str13 = Rank.NINE.toString();
+        assertEquals("9", str13);
+    }
+    @Test
+    void TestGetNumberRank(){
+        Rank rank1 = Rank.fromString("A");
+        assertEquals(14,rank1.getNumberRank());
+        Rank rank2 = Rank.fromString("10");
+        assertEquals(10,rank2.getNumberRank());
+        Rank rank3 = Rank.fromString("9");
+        assertEquals(9,rank3.getNumberRank());
+        Rank rank4 = Rank.fromString("8");
+        assertEquals(8,rank4.getNumberRank());
+        Rank rank5 = Rank.fromString("7");
+        assertEquals(7,rank5.getNumberRank());
+        Rank rank6 = Rank.fromString("6");
+        assertEquals(6,rank6.getNumberRank());
+
+        Rank rank7 = Rank.fromString("5");
+        assertEquals(5,rank7.getNumberRank());
+        Rank rank8 = Rank.fromString("4");
+        assertEquals(4,rank8.getNumberRank());
+        Rank rank9 = Rank.fromString("3");
+        assertEquals(3,rank9.getNumberRank());
+
+        assertThrows(IllegalStateException.class, () -> Rank.fromString("invalid"));
     }
 }
