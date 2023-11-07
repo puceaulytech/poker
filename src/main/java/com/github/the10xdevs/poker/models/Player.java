@@ -17,6 +17,15 @@ public class Player implements Comparable<Player> {
         return new Player(Arrays.stream(repr.split("\\s+")).map(Card::fromString).toList());
     }
 
+    public static Player readFromTerminal(BufferedReader reader) throws IOException {
+        System.out.print("Cartes? ");
+
+        String line = reader.readLine();
+        if (line == null) System.exit(0);
+
+        return Player.fromString(line);
+    }
+
     /**
      * Compute the best hand possible out of multiples cards
      *
@@ -51,15 +60,6 @@ public class Player implements Comparable<Player> {
         // Highest card
         Rank highestRank = Collections.max(ranks, RankComparator.STRONG_ACE);
         return new Hand(HandType.HIGH_CARD, highestRank);
-    }
-
-    public static Player readFromTerminal(BufferedReader reader) throws IOException {
-        System.out.print("Cartes? ");
-
-        String line = reader.readLine();
-        if (line == null) System.exit(0);
-
-        return Player.fromString(line);
     }
 
     @Override

@@ -4,6 +4,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Algorithms {
+    private Algorithms() {
+        throw new IllegalStateException("Utility class");
+    }
+
     /**
      * Generate a map of occurrences
      * <br>
@@ -57,9 +61,5 @@ public class Algorithms {
         Set<T> set = new HashSet<>(arr);
 
         return set.size() < arr.size();
-    }
-
-    private Algorithms() {
-        throw new IllegalStateException("Utility class");
     }
 }

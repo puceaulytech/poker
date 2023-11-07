@@ -26,10 +26,6 @@ public enum Rank implements Comparable<Rank> {
         this.numberRank = numberRank;
     }
 
-    public int getNumberRank() {
-        return numberRank;
-    }
-
     public static Rank fromString(String repr) {
         try {
             int v = Integer.parseInt(repr);
@@ -56,6 +52,10 @@ public enum Rank implements Comparable<Rank> {
                 default -> throw new IllegalStateException("invalid rank: " + repr);
             };
         }
+    }
+
+    public int getNumberRank() {
+        return numberRank;
     }
 
     @Override
