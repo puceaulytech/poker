@@ -21,7 +21,7 @@ class HandTypeTest {
         assertEquals("double paire", HandType.DOUBLE_PAIR.toString());
 
         assertEquals("brelan", HandType.THREE_OF_A_KIND.toString());
-        assertEquals("full", HandType.FULL_HOUSE.toString());
+        assertEquals("main pleine", HandType.FULL_HOUSE.toString());
 
         assertEquals("carré", HandType.FOUR_OF_A_KIND.toString());
 

@@ -22,6 +22,10 @@ public enum HandType {
      */
     STRAIGHT(4),
     /**
+     * Five cards with the same suit
+     */
+    FLUSH(5),
+    /**
      * One pair and a three of a kind
      */
     FULL_HOUSE(6),
@@ -50,6 +54,7 @@ public enum HandType {
             case STRAIGHT -> "suite";
             case FULL_HOUSE -> "main pleine";
             case FOUR_OF_A_KIND -> "carré";
+            case FLUSH  -> "couleur";
         };
     }
 }

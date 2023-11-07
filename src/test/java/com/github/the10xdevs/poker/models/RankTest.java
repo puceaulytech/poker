@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RankTest {
 
+
     @Test
     void testFromStringValid() {
         Rank rank1 = Rank.fromString("A");
@@ -92,7 +93,6 @@ class RankTest {
         assertEquals(7, rank5.getNumberRank());
         Rank rank6 = Rank.fromString("6");
         assertEquals(6, rank6.getNumberRank());
-
         Rank rank7 = Rank.fromString("5");
         assertEquals(5, rank7.getNumberRank());
         Rank rank8 = Rank.fromString("4");
