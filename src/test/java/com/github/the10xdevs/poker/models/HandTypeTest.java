@@ -23,7 +23,7 @@ class HandTypeTest {
         assertEquals("brelan", HandType.THREE_OF_A_KIND.toString());
         assertEquals("suite", HandType.STRAIGHT.toString());
         assertEquals("couleur", HandType.FLUSH.toString());
-        assertEquals("main pleine", HandType.FULL_HOUSE.toString());
+        assertEquals("full", HandType.FULL_HOUSE.toString());
         assertEquals("carré", HandType.FOUR_OF_A_KIND.toString());
     }
 
