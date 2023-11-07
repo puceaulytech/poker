@@ -17,6 +17,12 @@ public class Player implements Comparable<Player> {
         return new Player(Arrays.stream(repr.split("\\s+")).map(Card::fromString).toList());
     }
 
+    /**
+     * Compute the best hand possible out of multiples cards
+     *
+     * @param repr The cards the player has
+     * @return The best hand
+     */
     public Hand computeBestHand() {
         List<Rank> ranks = cards.stream().map(Card::getRank).toList();
         Map<Integer, Set<Rank>> rankOccurrences = Algorithms.getOccurrences(ranks);

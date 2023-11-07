@@ -14,14 +14,6 @@ public class Card {
         this.rank = rank;
     }
 
-    /**
-     * Compute the best hand possible out of multiples cards
-     *
-     * @param repr The cards the player has
-     * @return The best hand
-     */
-
-
     public static Card fromString(String repr) {
         if (!Character.isDigit(repr.charAt(0))) {
             Rank rank = Rank.fromString(String.valueOf(repr.charAt(0)));
