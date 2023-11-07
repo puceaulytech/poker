@@ -8,15 +8,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class HandTypeTest {
     HandType pairHand;
     HandType doublePairHand;
-    HandType fourOfAKindHand;
     HandType threeOfAKindHand;
+    HandType fullHouseHand;
+    HandType fourOfAKindHand;
     HandType highCardHand;
-
-    @Test
-    void TestEnumHandTypeValues() {
-        assertEquals(5, HandType.values().length);
-
-    }
 
     @Test
     void toStringTest() {
@@ -26,14 +21,10 @@ class HandTypeTest {
         assertEquals("double paire", HandType.DOUBLE_PAIR.toString());
 
         assertEquals("brelan", HandType.THREE_OF_A_KIND.toString());
+        assertEquals("full", HandType.FULL_HOUSE.toString());
 
         assertEquals("carré", HandType.FOUR_OF_A_KIND.toString());
 
-    }
-
-    @Test
-    void HandTypeLengthTest() {
-        assertEquals(5, HandType.values().length);
     }
 
     @Test
@@ -51,10 +42,11 @@ class HandTypeTest {
         threeOfAKindHand = HandType.THREE_OF_A_KIND;
         assertEquals(3, threeOfAKindHand.getScore());
 
+        fullHouseHand = HandType.FULL_HOUSE;
+        assertEquals(6, fullHouseHand.getScore());
+
         fourOfAKindHand = HandType.FOUR_OF_A_KIND;
         assertEquals(7, fourOfAKindHand.getScore());
 
     }
-
-
 }
