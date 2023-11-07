@@ -14,7 +14,7 @@ class HandTypeTest {
 
     @Test
     void TestEnumHandTypeValues(){
-        assertEquals(5, HandType.values().length);
+        assertEquals(6, HandType.values().length);
 
     }
     @Test
@@ -32,7 +32,7 @@ class HandTypeTest {
 
     @Test
     void HandTypeLengthTest(){
-        assertEquals(5, HandType.values().length);
+        assertEquals(6, HandType.values().length);
     }
     @Test
     void GetScoreTypeTest(){

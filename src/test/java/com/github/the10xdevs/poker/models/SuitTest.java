@@ -11,6 +11,13 @@ class SuitTest {
         Suit suit = Suit.fromString("Tr");
         assertEquals(Suit.CLUB, suit);
     }
+    @Test
+    void toStringTest(){
+        assertEquals("Ca",Suit.DIAMOND.toString());
+        assertEquals("Tr",Suit.CLUB.toString());
+        assertEquals("Pi",Suit.SPADE.toString());
+        assertEquals("Co",Suit.HEART.toString());
+    }
 
     @Test
     void testFromStringHearts() {
