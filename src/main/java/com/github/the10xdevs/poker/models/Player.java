@@ -42,15 +42,22 @@ public class Player implements Comparable<Player> {
             return new Hand(HandType.FOUR_OF_A_KIND, bestFour);
         }
 
-        // Three of a kind
         Set<Rank> threes = rankOccurrences.get(3);
+        Set<Rank> pairs = rankOccurrences.get(2);
+
+        // Full house
+        if (threes != null && pairs != null) {
+            Rank bestThree = Collections.max(threes, RankComparator.STRONG_ACE);
+            return new Hand(HandType.FULL_HOUSE, bestThree);
+        }
+
+        // Three of a kind
         if (threes != null) {
             Rank bestThree = Collections.max(threes, RankComparator.STRONG_ACE);
             return new Hand(HandType.THREE_OF_A_KIND, bestThree);
         }
 
         // Pairs and double pairs
-        Set<Rank> pairs = rankOccurrences.get(2);
         if (pairs != null) {
             Rank bestPair = Collections.max(pairs, RankComparator.STRONG_ACE);
             return new Hand(pairs.size() >= 2 ? HandType.DOUBLE_PAIR : HandType.PAIR, bestPair);

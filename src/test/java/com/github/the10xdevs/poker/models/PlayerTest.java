@@ -19,6 +19,18 @@ class PlayerTest {
     }
 
     @Test
+    void computeBestHandFull() {
+        playerOne = Player.fromString("RPi RCa RCo 3Co 3Ca");
+        Hand bestHand = playerOne.computeBestHand();
+
+        assertEquals(HandType.FULL_HOUSE, bestHand.getType());
+        assertEquals(Rank.KING, bestHand.getHighestRank());
+
+        Player playerTwo = Player.fromString("DCo DPi DTr ACo APi");
+        assertEquals(1, playerOne.compareTo(playerTwo));
+    }
+
+    @Test
     void computeBestHandThrees() {
 
         Player playerOne = Player.fromString("RCa RPi RCo ");
