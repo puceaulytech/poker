@@ -20,10 +20,10 @@ public class Player implements Comparable<Player> {
     public Hand computeBestHand() {
         List<Rank> ranks = cards.stream().map(Card::getRank).toList();
         Map<Integer, Set<Rank>> rankOccurrences = Algorithms.getOccurrences(ranks);
-        // FlASH
+        // FlUSH
         
         if (isFlush(cards) ) {
-            return new Hand(HandType.FLASH, Collections.max(ranks, RankComparator.STRONG_ACE));
+            return new Hand(HandType.FLUSH, Collections.max(ranks, RankComparator.STRONG_ACE));
         }
         // Four of a kind
         Set<Rank> fours = rankOccurrences.get(4);
