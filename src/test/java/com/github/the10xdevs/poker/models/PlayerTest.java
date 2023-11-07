@@ -2,24 +2,32 @@ package com.github.the10xdevs.poker.models;
 
 import org.junit.jupiter.api.Test;
 
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PlayerTest {
 
+    @Test
+    void computeBestHandFlush() {
+        Player playerOne = Player.fromString("4Co 6Co 8Co VCo ACo");
+        Hand bestHand = playerOne.computeBestHand();
+
+        assertEquals(HandType.FLUSH, bestHand.getType());
+        assertEquals(Rank.ACE, bestHand.getHighestRank());
+    }
 
     @Test
-     void computeBestHandFours() {
-        Player playerOne= Player.fromString("RCa RPi RCo RTr");
+    void computeBestHandFours() {
+        Player playerOne = Player.fromString("RCa RPi RCo RTr");
         Hand bestHand = playerOne.computeBestHand();
 
         assertEquals(HandType.FOUR_OF_A_KIND, bestHand.getType());
         assertEquals(Rank.KING, bestHand.getHighestRank());
     }
+
     @Test
     void computeBestHandThrees() {
 
-        Player playerOne= Player.fromString("RCa RPi RCo ");
+        Player playerOne = Player.fromString("RCa RPi RCo ");
         Hand bestHand = playerOne.computeBestHand();
 
         assertEquals(HandType.THREE_OF_A_KIND, bestHand.getType());
@@ -28,7 +36,7 @@ class PlayerTest {
 
     @Test
     void computeBestHandDoublePairs() {
-        Player playerOne= Player.fromString("RCa RPi 5Ca 5Tr");
+        Player playerOne = Player.fromString("RCa RPi 5Ca 5Tr");
         Hand bestHand = playerOne.computeBestHand();
 
         assertEquals(HandType.DOUBLE_PAIR, bestHand.getType());
@@ -37,7 +45,7 @@ class PlayerTest {
 
     @Test
     void computeBestHandPairs() {
-        Player playerOne= Player.fromString("RCa RPi 5Co ");
+        Player playerOne = Player.fromString("RCa RPi 5Co ");
         Hand bestHand = playerOne.computeBestHand();
 
         assertEquals(HandType.PAIR, bestHand.getType());
@@ -46,7 +54,7 @@ class PlayerTest {
 
     @Test
     void computeBestHandHighestRank() {
-        Player playerOne= Player.fromString("VCa 10Pi 5Co ");
+        Player playerOne = Player.fromString("VCa 10Pi 5Co ");
         Hand bestHand = playerOne.computeBestHand();
 
         assertEquals(HandType.HIGH_CARD, bestHand.getType());

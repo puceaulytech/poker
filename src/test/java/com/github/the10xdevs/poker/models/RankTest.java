@@ -1,11 +1,13 @@
 package com.github.the10xdevs.poker.models;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 class RankTest {
+
 
     @Test
     void testFromStringValid() {
@@ -76,27 +78,28 @@ class RankTest {
         String str13 = Rank.NINE.toString();
         assertEquals("9", str13);
     }
+
     @Test
-    void TestGetNumberRank(){
+    void TestGetNumberRank() {
         Rank rank1 = Rank.fromString("A");
-        assertEquals(14,rank1.getNumberRank());
+        assertEquals(14, rank1.getNumberRank());
         Rank rank2 = Rank.fromString("10");
-        assertEquals(10,rank2.getNumberRank());
+        assertEquals(10, rank2.getNumberRank());
         Rank rank3 = Rank.fromString("9");
-        assertEquals(9,rank3.getNumberRank());
+        assertEquals(9, rank3.getNumberRank());
         Rank rank4 = Rank.fromString("8");
-        assertEquals(8,rank4.getNumberRank());
+        assertEquals(8, rank4.getNumberRank());
         Rank rank5 = Rank.fromString("7");
-        assertEquals(7,rank5.getNumberRank());
+        assertEquals(7, rank5.getNumberRank());
         Rank rank6 = Rank.fromString("6");
-        assertEquals(6,rank6.getNumberRank());
+        assertEquals(6, rank6.getNumberRank());
 
         Rank rank7 = Rank.fromString("5");
-        assertEquals(5,rank7.getNumberRank());
+        assertEquals(5, rank7.getNumberRank());
         Rank rank8 = Rank.fromString("4");
-        assertEquals(4,rank8.getNumberRank());
+        assertEquals(4, rank8.getNumberRank());
         Rank rank9 = Rank.fromString("3");
-        assertEquals(3,rank9.getNumberRank());
+        assertEquals(3, rank9.getNumberRank());
 
         assertThrows(IllegalStateException.class, () -> Rank.fromString("invalid"));
     }
