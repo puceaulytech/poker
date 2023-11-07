@@ -18,6 +18,11 @@ public enum HandType {
      */
     THREE_OF_A_KIND(3),
     /**
+     * Five cards with the same value
+     */
+    FLUSH(5),
+
+    /**
      * Four cards with the same value
      */
     FOUR_OF_A_KIND(7);
@@ -40,6 +45,7 @@ public enum HandType {
             case DOUBLE_PAIR -> "double paire";
             case THREE_OF_A_KIND -> "brelan";
             case FOUR_OF_A_KIND -> "carré";
+            case FLUSH  -> "couleur";
         };
     }
 }
