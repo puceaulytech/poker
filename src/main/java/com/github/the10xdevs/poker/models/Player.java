@@ -36,7 +36,7 @@ public class Player implements Comparable<Player> {
         Map<Integer, Set<Rank>> rankOccurrences = Algorithms.getOccurrences(ranks);
 
         // Flush
-        if (isFlush(cards) ) {
+        if (isFlush(cards)) {
             return new Hand(HandType.FLUSH, Collections.max(ranks, RankComparator.STRONG_ACE));
         }
         // Four of a kind

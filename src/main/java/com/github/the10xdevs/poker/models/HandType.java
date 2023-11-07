@@ -54,7 +54,7 @@ public enum HandType {
             case STRAIGHT -> "suite";
             case FULL_HOUSE -> "main pleine";
             case FOUR_OF_A_KIND -> "carré";
-            case FLUSH  -> "couleur";
+            case FLUSH -> "couleur";
         };
     }
 }

@@ -13,10 +13,10 @@ public class Main {
 
         Player playerOne = Player.readFromTerminal(reader);
         Player playerTwo = Player.readFromTerminal(reader);
-        int result=playerOne.compareTo(playerTwo);
+        int result = playerOne.compareTo(playerTwo);
         if (result > 0) {
             System.out.println("Le joueur 1 gagne");
-        } else if (result==0){
+        } else if (result == 0) {
             System.out.println("égalité");
         } else {
             System.out.println("Le joueur 2 gagne");
