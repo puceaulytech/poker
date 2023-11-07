@@ -20,7 +20,11 @@ public class Player implements Comparable<Player> {
     public Hand computeBestHand() {
         List<Rank> ranks = cards.stream().map(Card::getRank).toList();
         Map<Integer, Set<Rank>> rankOccurrences = Algorithms.getOccurrences(ranks);
-
+        // FlASH
+        
+        if (isFlush(cards) ) {
+            return new Hand(HandType.FLASH, Collections.max(ranks, RankComparator.STRONG_ACE));
+        }
         // Four of a kind
         Set<Rank> fours = rankOccurrences.get(4);
         if (fours != null) {
@@ -45,6 +49,18 @@ public class Player implements Comparable<Player> {
         // Highest card
         Rank highestRank = Collections.max(ranks, RankComparator.STRONG_ACE);
         return new Hand(HandType.HIGH_CARD, highestRank);
+
+    }
+    private boolean isFlush(List<Card> cards) {
+        Suit firstCardSuit = cards.get(0).getSuit();
+
+        for (Card card : cards) {
+            if (card.getSuit() != firstCardSuit) {
+                return false;
+            }
+
+        }
+        return true;
     }
 
     public static Player readFromTerminal(BufferedReader reader) throws IOException {
@@ -63,4 +79,7 @@ public class Player implements Comparable<Player> {
 
         return thisHand.compareTo(otherHand);
     }
-}
+
+    }
+
+
