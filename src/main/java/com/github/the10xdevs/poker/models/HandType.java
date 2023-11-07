@@ -48,7 +48,7 @@ public enum HandType {
             case DOUBLE_PAIR -> "double paire";
             case THREE_OF_A_KIND -> "brelan";
             case STRAIGHT -> "suite";
-            case FULL_HOUSE -> "full";
+            case FULL_HOUSE -> "main pleine";
             case FOUR_OF_A_KIND -> "carré";
         };
     }
