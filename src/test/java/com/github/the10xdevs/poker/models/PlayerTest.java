@@ -65,4 +65,26 @@ class PlayerTest {
         assertEquals(HandType.HIGH_CARD, bestHand.getType());
         assertEquals(Rank.JACK, bestHand.getHighestRank());
     }
+
+    @Test
+    void computeBestHandStraightTest() {
+        playerOne = Player.fromString("RPi DCa VPi ACo 10Co");
+        Hand bestHand = playerOne.computeBestHand();
+        assertEquals(HandType.STRAIGHT, bestHand.getType());
+        assertEquals(Rank.ACE, bestHand.getHighestRank());
+
+        playerOne = Player.fromString("4Ca 7Pi 8Tr 6Tr 5Ca");
+        bestHand = playerOne.computeBestHand();
+        assertEquals(HandType.STRAIGHT, bestHand.getType());
+        assertEquals(Rank.EIGHT, bestHand.getHighestRank());
+
+        playerOne = Player.fromString("3Ca APi 2Tr 5Tr 4Ca");
+        bestHand = playerOne.computeBestHand();
+        assertEquals(HandType.STRAIGHT, bestHand.getType());
+        assertEquals(Rank.FIVE, bestHand.getHighestRank());
+
+        playerOne = Player.fromString("3Ca APi 2Tr 7Tr 4Ca");
+        bestHand = playerOne.computeBestHand();
+        assertEquals(HandType.HIGH_CARD, bestHand.getType());
+    }
 }
