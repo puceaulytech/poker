@@ -15,7 +15,7 @@ public class ParsingException extends Exception {
     @Override
     public String getLocalizedMessage() {
         Locale currentLocale = Locale.getDefault();
-        if (currentLocale.getLanguage() == "fr") {
+        if (currentLocale.getLanguage().equals("fr")) {
             return getFrenchClassName().toLowerCase() + " invalide: " + this.token;
         }
         return this.getMessage();

@@ -1,5 +1,6 @@
 package com.github.the10xdevs.poker.models;
 
+import com.github.the10xdevs.poker.exceptions.EmptyInputException;
 import com.github.the10xdevs.poker.exceptions.ParsingException;
 import com.github.the10xdevs.poker.utils.Algorithms;
 
@@ -30,10 +31,10 @@ public class Player implements Comparable<Player> {
             try {
                 String line = reader.readLine();
                 if (line == null) System.exit(0);
-                if (line.isBlank()) throw new IllegalStateException("empty input");
+                if (line.isBlank()) throw new EmptyInputException();
 
                 return Player.fromString(line);
-            } catch (IOException | ParsingException | IllegalStateException error) {
+            } catch (IOException | ParsingException | EmptyInputException error) {
                 System.out.println(error.getLocalizedMessage() + ", recommencez svp");
             }
         }
