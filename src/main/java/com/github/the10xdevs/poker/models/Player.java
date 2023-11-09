@@ -17,13 +17,20 @@ public class Player implements Comparable<Player> {
         return new Player(Arrays.stream(repr.split("\\s+")).map(Card::fromString).toList());
     }
 
-    public static Player readFromTerminal(BufferedReader reader) throws IOException {
-        System.out.print("Cartes? ");
+    public static Player readFromTerminal(BufferedReader reader) {
+        while (true) {
+            System.out.print("Cartes? ");
 
-        String line = reader.readLine();
-        if (line == null) System.exit(0);
+            try {
+                String line = reader.readLine();
+                if (line == null) System.exit(0);
+                if (line.isBlank()) throw new IllegalStateException("empty input");
 
-        return Player.fromString(line);
+                return Player.fromString(line);
+            } catch (IOException | IllegalStateException error) {
+                System.out.println(error.getLocalizedMessage() + ", recommencez svp");
+            }
+        }
     }
 
     /**
