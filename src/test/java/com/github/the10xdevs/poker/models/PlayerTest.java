@@ -95,4 +95,12 @@ class PlayerTest {
         bestHand = playerOne.computeBestHand();
         assertEquals(HandType.HIGH_CARD, bestHand.getType());
     }
+
+    @Test
+    void computeBestHandStraightFlushTest() {
+        playerOne = Player.fromString("RPi DPi VPi APi 10Pi");
+        Hand bestHand = playerOne.computeBestHand();
+        assertEquals(HandType.STRAIGHT_FLUSH, bestHand.getType());
+        assertEquals(Rank.ACE, bestHand.getHighestRank());
+    }
 }

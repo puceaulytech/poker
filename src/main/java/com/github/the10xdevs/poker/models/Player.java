@@ -35,10 +35,24 @@ public class Player implements Comparable<Player> {
         List<Rank> ranks = cards.stream().map(Card::getRank).toList();
         Map<Integer, Set<Rank>> rankOccurrences = Algorithms.getOccurrences(ranks);
 
+        boolean hasFlush = hasFlush();
+        Rank highStraight = highestInStraight();
+
+        // Straight flush
+        if (highStraight != null && hasFlush) {
+            return new Hand(HandType.STRAIGHT_FLUSH, highStraight);
+        }
+
+        // Straight
+        if (highStraight != null) {
+            return new Hand(HandType.STRAIGHT, highStraight);
+        }
+
         // Flush
-        if (hasFlush()) {
+        if (hasFlush) {
             return new Hand(HandType.FLUSH, Collections.max(ranks, RankComparator.STRONG_ACE));
         }
+
         // Four of a kind
         Set<Rank> fours = rankOccurrences.get(4);
         if (fours != null) {
@@ -65,12 +79,6 @@ public class Player implements Comparable<Player> {
         if (pairs != null) {
             Rank bestPair = Collections.max(pairs, RankComparator.STRONG_ACE);
             return new Hand(pairs.size() >= 2 ? HandType.DOUBLE_PAIR : HandType.PAIR, bestPair);
-        }
-
-        // Straight
-        Rank highStraight = highestInStraight();
-        if (highStraight != null) {
-            return new Hand(HandType.STRAIGHT, highStraight);
         }
 
         // Highest card

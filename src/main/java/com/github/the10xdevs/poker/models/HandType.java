@@ -32,7 +32,11 @@ public enum HandType {
     /**
      * Four cards with the same value
      */
-    FOUR_OF_A_KIND(7);
+    FOUR_OF_A_KIND(7),
+    /**
+     * A straight where all the cards have the same suit
+     */
+    STRAIGHT_FLUSH(8);
 
     private final int score;
 
@@ -55,6 +59,7 @@ public enum HandType {
             case FULL_HOUSE -> "full";
             case FOUR_OF_A_KIND -> "carré";
             case FLUSH -> "couleur";
+            case STRAIGHT_FLUSH -> "quinte flush";
         };
     }
 }
