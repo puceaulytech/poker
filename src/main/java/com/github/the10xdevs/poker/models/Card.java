@@ -1,5 +1,7 @@
 package com.github.the10xdevs.poker.models;
 
+import com.github.the10xdevs.poker.exceptions.ParsingException;
+
 import java.util.Objects;
 
 /**
@@ -14,7 +16,7 @@ public class Card {
         this.rank = rank;
     }
 
-    public static Card fromString(String repr) {
+    public static Card fromString(String repr) throws ParsingException {
         if (!Character.isDigit(repr.charAt(0))) {
             Rank rank = Rank.fromString(String.valueOf(repr.charAt(0)));
             Suit suit = Suit.fromString(repr.substring(1));

@@ -1,5 +1,7 @@
 package com.github.the10xdevs.poker.models;
 
+import com.github.the10xdevs.poker.exceptions.ParsingException;
+
 /**
  * Represents the suit of a card
  */
@@ -9,13 +11,13 @@ public enum Suit {
     HEART,
     SPADE;
 
-    public static Suit fromString(String repr) {
+    public static Suit fromString(String repr) throws ParsingException {
         return switch (repr) {
             case "Tr" -> CLUB;
             case "Co" -> HEART;
             case "Pi" -> SPADE;
             case "Ca" -> DIAMOND;
-            default -> throw new IllegalStateException("Invalid suit: " + repr);
+            default -> throw new ParsingException("Suit", repr);
         };
     }
 

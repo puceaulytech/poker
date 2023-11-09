@@ -1,5 +1,6 @@
 package com.github.the10xdevs.poker.models;
 
+import com.github.the10xdevs.poker.exceptions.ParsingException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,7 +11,7 @@ class RankTest {
 
 
     @Test
-    void testFromStringValid() {
+    void testFromStringValid() throws ParsingException {
         Rank rank1 = Rank.fromString("A");
         assertEquals(Rank.ACE, rank1);
 
@@ -29,12 +30,12 @@ class RankTest {
         Rank rank6 = Rank.fromString("10");
         assertEquals(Rank.TEN, rank6);
 
-        assertThrows(IllegalStateException.class, () -> Rank.fromString("Invalid"));
+        assertThrows(ParsingException.class, () -> Rank.fromString("Invalid"));
     }
 
     @Test
     void testFromStringInvalid() {
-        assertThrows(IllegalStateException.class, () -> Rank.fromString("Invalid"));
+        assertThrows(ParsingException.class, () -> Rank.fromString("Invalid"));
     }
 
     @Test
@@ -80,7 +81,7 @@ class RankTest {
     }
 
     @Test
-    void TestGetNumberRank() {
+    void TestGetNumberRank() throws ParsingException {
         Rank rank1 = Rank.fromString("A");
         assertEquals(14, rank1.getNumberRank());
         Rank rank2 = Rank.fromString("10");
@@ -100,6 +101,6 @@ class RankTest {
         Rank rank9 = Rank.fromString("3");
         assertEquals(3, rank9.getNumberRank());
 
-        assertThrows(IllegalStateException.class, () -> Rank.fromString("invalid"));
+        assertThrows(ParsingException.class, () -> Rank.fromString("invalid"));
     }
 }

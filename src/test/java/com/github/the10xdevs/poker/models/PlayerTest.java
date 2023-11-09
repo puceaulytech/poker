@@ -1,5 +1,6 @@
 package com.github.the10xdevs.poker.models;
 
+import com.github.the10xdevs.poker.exceptions.ParsingException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,7 +9,7 @@ class PlayerTest {
     Player playerOne;
 
     @Test
-    void computeBestHandFlush() {
+    void computeBestHandFlush() throws ParsingException {
         playerOne = Player.fromString("4Co 6Co 8Co VCo ACo");
         Hand bestHand = playerOne.computeBestHand();
 
@@ -17,7 +18,7 @@ class PlayerTest {
     }
 
     @Test
-    void computeBestHandFours() {
+    void computeBestHandFours() throws ParsingException {
         playerOne = Player.fromString("RCa RPi RCo RTr");
         Hand bestHand = playerOne.computeBestHand();
 
@@ -26,7 +27,7 @@ class PlayerTest {
     }
 
     @Test
-    void computeBestHandFull() {
+    void computeBestHandFull() throws ParsingException {
         playerOne = Player.fromString("RPi RCa RCo 3Co 3Ca");
         Hand bestHand = playerOne.computeBestHand();
 
@@ -38,7 +39,7 @@ class PlayerTest {
     }
 
     @Test
-    void computeBestHandThrees() {
+    void computeBestHandThrees() throws ParsingException {
 
         playerOne = Player.fromString("RCa RPi RCo ");
         Hand bestHand = playerOne.computeBestHand();
@@ -48,7 +49,7 @@ class PlayerTest {
     }
 
     @Test
-    void computeBestHandDoublePairs() {
+    void computeBestHandDoublePairs() throws ParsingException {
         playerOne = Player.fromString("RCa RPi 5Ca 5Tr");
         Hand bestHand = playerOne.computeBestHand();
 
@@ -57,7 +58,7 @@ class PlayerTest {
     }
 
     @Test
-    void computeBestHandPairs() {
+    void computeBestHandPairs() throws ParsingException {
         playerOne = Player.fromString("RCa RPi 5Co ");
         Hand bestHand = playerOne.computeBestHand();
 
@@ -66,7 +67,7 @@ class PlayerTest {
     }
 
     @Test
-    void computeBestHandHighestRank() {
+    void computeBestHandHighestRank() throws ParsingException {
         playerOne = Player.fromString("VCa 10Pi 5Co ");
         Hand bestHand = playerOne.computeBestHand();
 
@@ -75,7 +76,7 @@ class PlayerTest {
     }
 
     @Test
-    void computeBestHandStraightTest() {
+    void computeBestHandStraightTest() throws ParsingException {
         playerOne = Player.fromString("RPi DCa VPi ACo 10Co");
         Hand bestHand = playerOne.computeBestHand();
         assertEquals(HandType.STRAIGHT, bestHand.getType());
@@ -97,7 +98,7 @@ class PlayerTest {
     }
 
     @Test
-    void computeBestHandStraightFlushTest() {
+    void computeBestHandStraightFlushTest() throws ParsingException {
         playerOne = Player.fromString("RPi DPi VPi APi 10Pi");
         Hand bestHand = playerOne.computeBestHand();
         assertEquals(HandType.STRAIGHT_FLUSH, bestHand.getType());

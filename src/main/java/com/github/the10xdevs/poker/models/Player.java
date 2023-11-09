@@ -1,5 +1,6 @@
 package com.github.the10xdevs.poker.models;
 
+import com.github.the10xdevs.poker.exceptions.ParsingException;
 import com.github.the10xdevs.poker.utils.Algorithms;
 
 import java.io.BufferedReader;
@@ -13,8 +14,13 @@ public class Player implements Comparable<Player> {
         this.cards = cards;
     }
 
-    public static Player fromString(String repr) {
-        return new Player(Arrays.stream(repr.split("\\s+")).map(Card::fromString).toList());
+    public static Player fromString(String repr) throws ParsingException {
+        List<Card> list = new ArrayList<>();
+        for (String s : repr.split("\\s+")) {
+            Card card = Card.fromString(s);
+            list.add(card);
+        }
+        return new Player(list);
     }
 
     public static Player readFromTerminal(BufferedReader reader) {
@@ -27,7 +33,7 @@ public class Player implements Comparable<Player> {
                 if (line.isBlank()) throw new IllegalStateException("empty input");
 
                 return Player.fromString(line);
-            } catch (IOException | IllegalStateException error) {
+            } catch (IOException | ParsingException | IllegalStateException error) {
                 System.out.println(error.getLocalizedMessage() + ", recommencez svp");
             }
         }

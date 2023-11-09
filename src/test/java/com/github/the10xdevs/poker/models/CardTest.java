@@ -1,5 +1,6 @@
 package com.github.the10xdevs.poker.models;
 
+import com.github.the10xdevs.poker.exceptions.ParsingException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,17 +14,16 @@ class CardTest {
 
 
     @BeforeEach
-    void SetUp() {
+    void SetUp() throws ParsingException {
         card1 = Card.fromString("2Tr");
         card2 = Card.fromString("APi");
         card3 = Card.fromString("10Co");
         card4 = Card.fromString("RCa");
-
     }
 
 
     @Test
-    void fromString() {
+    void fromString() throws ParsingException {
 
         Card c1 = new Card(Suit.CLUB, Rank.TWO);
         assertEquals(Rank.TWO, c1.getRank());
@@ -39,24 +39,21 @@ class CardTest {
         assertEquals(Rank.TEN, c3.getRank());
         assertEquals(Suit.HEART, c3.getSuit());
         assertEquals(c3, Card.fromString("10Co"));
-
     }
 
     @Test
     void getSuit() {
-        assertEquals(card1.getSuit(), Suit.CLUB);
-        assertEquals(card2.getSuit(), Suit.SPADE);
-        assertEquals(card3.getSuit(), Suit.HEART);
-        assertEquals(card4.getSuit(), Suit.DIAMOND);
-
-
+        assertEquals(Suit.CLUB, card1.getSuit());
+        assertEquals(Suit.SPADE, card2.getSuit());
+        assertEquals(Suit.HEART, card3.getSuit());
+        assertEquals(Suit.DIAMOND, card4.getSuit());
     }
 
     @Test
     void getRank() {
-        assertEquals(card1.getRank(), Rank.TWO);
-        assertEquals(card2.getRank(), Rank.ACE);
-        assertEquals(card3.getRank(), Rank.TEN);
-        assertEquals(card4.getRank(), Rank.KING);
+        assertEquals(Rank.TWO, card1.getRank());
+        assertEquals(Rank.ACE, card2.getRank());
+        assertEquals(Rank.TEN, card3.getRank());
+        assertEquals(Rank.KING, card4.getRank());
     }
 }

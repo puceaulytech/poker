@@ -1,5 +1,7 @@
 package com.github.the10xdevs.poker.models;
 
+import com.github.the10xdevs.poker.exceptions.ParsingException;
+
 /**
  * Represents the rank of a card.
  * <p>
@@ -26,7 +28,7 @@ public enum Rank implements Comparable<Rank> {
         this.numberRank = numberRank;
     }
 
-    public static Rank fromString(String repr) {
+    public static Rank fromString(String repr) throws ParsingException {
         try {
             int v = Integer.parseInt(repr);
 
@@ -40,7 +42,7 @@ public enum Rank implements Comparable<Rank> {
                 case 8 -> Rank.EIGHT;
                 case 9 -> Rank.NINE;
                 case 10 -> Rank.TEN;
-                default -> throw new IllegalStateException("invalid rank: " + v);
+                default -> throw new ParsingException("Rank", repr);
             };
 
         } catch (NumberFormatException e) {
@@ -49,7 +51,7 @@ public enum Rank implements Comparable<Rank> {
                 case "R" -> Rank.KING;
                 case "D" -> Rank.QUEEN;
                 case "V" -> Rank.JACK;
-                default -> throw new IllegalStateException("invalid rank: " + repr);
+                default -> throw new ParsingException("Rank", repr);
             };
         }
     }
