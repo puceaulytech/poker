@@ -24,10 +24,10 @@ public enum Suit {
     @Override
     public String toString() {
         return switch (this) {
-            case DIAMOND -> "Ca";
-            case CLUB -> "Tr";
-            case HEART -> "Co";
-            case SPADE -> "Pi";
+            case DIAMOND -> "carreau";
+            case CLUB -> "trèfle";
+            case HEART -> "coeur";
+            case SPADE -> "pique";
         };
     }
 }

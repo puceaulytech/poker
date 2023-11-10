@@ -27,9 +27,9 @@ class SuitTest {
 
     @Test
     void toStringTest() {
-        assertEquals("Ca", Suit.DIAMOND.toString());
-        assertEquals("Tr", Suit.CLUB.toString());
-        assertEquals("Pi", Suit.SPADE.toString());
-        assertEquals("Co", Suit.HEART.toString());
+        assertEquals("carreau", Suit.DIAMOND.toString());
+        assertEquals("trèfle", Suit.CLUB.toString());
+        assertEquals("pique", Suit.SPADE.toString());
+        assertEquals("coeur", Suit.HEART.toString());
     }
 }
