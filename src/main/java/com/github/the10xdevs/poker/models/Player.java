@@ -101,6 +101,7 @@ public class Player {
     }
 
     private Suit flushSuit() {
+        if (this.cards.size() != 5) return null;
         Suit firstCardSuit = cards.get(0).getSuit();
 
         for (Card card : cards) {
@@ -122,6 +123,8 @@ public class Player {
      * @return The highest rank in straight or null if the hand is not a straight
      */
     private Rank highestInStraight() {
+        if (this.cards.size() != 5) return null;
+
         List<Card> modifiableCards = new ArrayList<>(cards);
         modifiableCards.sort(Comparator.comparing(Card::getRank, RankComparator.STRONG_ACE));
 
