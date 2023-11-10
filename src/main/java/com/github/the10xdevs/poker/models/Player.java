@@ -145,4 +145,8 @@ public class Player {
         }
         return modifiableCards.get(lastIndex).getRank();
     }
+
+    public List<Card> getCards() {
+        return cards;
+    }
 }

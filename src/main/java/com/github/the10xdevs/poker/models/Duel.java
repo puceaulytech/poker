@@ -1,5 +1,10 @@
 package com.github.the10xdevs.poker.models;
 
+import com.github.the10xdevs.poker.utils.Algorithms;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Duel {
     private final Player firstPlayer;
     private final Player secondPlayer;
@@ -13,6 +18,11 @@ public class Duel {
     }
 
     public void play() {
+        if (this.hasDuplicateCards()) {
+            System.out.println("Certaines cartes sont en double");
+            return;
+        }
+
         Hand firstPlayerHand = this.firstPlayer.computeBestHand();
         Hand secondPlayerHand = this.secondPlayer.computeBestHand();
 
@@ -26,5 +36,11 @@ public class Duel {
         if (this.duelResult == 0) return "Egalité";
         String winnerString = this.duelResult == 1 ? "joueur 1" : "joueur 2";
         return String.join(" ", winnerString, "gagne avec la main suivante :", this.winningHand.toString());
+    }
+
+    private boolean hasDuplicateCards() {
+        List<Card> allCards = new ArrayList<>(this.firstPlayer.getCards());
+        allCards.addAll(this.secondPlayer.getCards());
+        return Algorithms.hasDuplicates(allCards);
     }
 }
