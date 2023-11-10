@@ -12,11 +12,11 @@ public enum Suit {
     SPADE;
 
     public static Suit fromString(String repr) throws ParsingException {
-        return switch (repr) {
-            case "Tr" -> CLUB;
-            case "Co" -> HEART;
-            case "Pi" -> SPADE;
-            case "Ca" -> DIAMOND;
+        return switch (repr.toLowerCase()) {
+            case "tr" -> CLUB;
+            case "co" -> HEART;
+            case "pi" -> SPADE;
+            case "ca" -> DIAMOND;
             default -> throw new ParsingException("Suit", repr);
         };
     }
