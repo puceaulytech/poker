@@ -2,11 +2,17 @@ package com.github.the10xdevs.poker.models;
 
 public class Hand implements Comparable<Hand> {
     private final Rank highestRank;
+    private final Suit suit;
     private final HandType type;
 
-    public Hand(HandType type, Rank highestRank) {
+    public Hand(HandType type, Rank highestRank, Suit suit) {
         this.type = type;
         this.highestRank = highestRank;
+        this.suit = suit;
+    }
+
+    public Hand(HandType type, Rank highestRank) {
+        this(type, highestRank, null);
     }
 
     public Rank getHighestRank() {
@@ -15,6 +21,10 @@ public class Hand implements Comparable<Hand> {
 
     public HandType getType() {
         return this.type;
+    }
+
+    public Suit getSuit() {
+        return suit;
     }
 
     @Override
