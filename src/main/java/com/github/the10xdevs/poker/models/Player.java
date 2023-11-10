@@ -33,7 +33,7 @@ public class Player {
                 if (line == null) System.exit(0);
                 if (line.isBlank()) throw new EmptyInputException();
 
-                return Player.fromString(line);
+                return Player.fromString(line.trim());
             } catch (IOException | ParsingException | EmptyInputException error) {
                 System.out.println(error.getLocalizedMessage() + ", recommencez svp");
             }

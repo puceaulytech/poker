@@ -17,6 +17,8 @@ public class Card {
     }
 
     public static Card fromString(String repr) throws ParsingException {
+        if (repr.length() < 3) throw new ParsingException("Rank", repr);
+
         if (!Character.isDigit(repr.charAt(0))) {
             Rank rank = Rank.fromString(String.valueOf(repr.charAt(0)));
             Suit suit = Suit.fromString(repr.substring(1));
