@@ -54,24 +54,26 @@ public class Player {
 
         // Straight flush
         if (highStraight != null && flushSuit != null) {
-            return new Hand(HandType.STRAIGHT_FLUSH, highStraight, flushSuit);
+            return new Hand(HandType.STRAIGHT_FLUSH, List.of(highStraight), flushSuit);
         }
 
         // Straight
         if (highStraight != null) {
-            return new Hand(HandType.STRAIGHT, highStraight);
+            return new Hand(HandType.STRAIGHT, List.of(highStraight));
         }
 
         // Flush
         if (flushSuit != null) {
-            return new Hand(HandType.FLUSH, Collections.max(ranks, RankComparator.STRONG_ACE), flushSuit);
+            List<Rank> sortedRanks = new ArrayList<>(ranks);
+            sortedRanks.sort(RankComparator.STRONG_ACE.reversed());
+            return new Hand(HandType.FLUSH, sortedRanks, flushSuit);
         }
 
         // Four of a kind
         Set<Rank> fours = rankOccurrences.get(4);
         if (fours != null) {
             Rank bestFour = Collections.max(fours, RankComparator.STRONG_ACE);
-            return new Hand(HandType.FOUR_OF_A_KIND, bestFour);
+            return new Hand(HandType.FOUR_OF_A_KIND, List.of(bestFour));
         }
 
         Set<Rank> threes = rankOccurrences.get(3);
@@ -80,24 +82,28 @@ public class Player {
         // Full house
         if (threes != null && pairs != null) {
             Rank bestThree = Collections.max(threes, RankComparator.STRONG_ACE);
-            return new Hand(HandType.FULL_HOUSE, bestThree);
+            Rank bestPair = Collections.max(pairs, RankComparator.STRONG_ACE);
+            return new Hand(HandType.FULL_HOUSE, List.of(bestThree, bestPair));
         }
 
         // Three of a kind
         if (threes != null) {
             Rank bestThree = Collections.max(threes, RankComparator.STRONG_ACE);
-            return new Hand(HandType.THREE_OF_A_KIND, bestThree);
+            return new Hand(HandType.THREE_OF_A_KIND, List.of(bestThree));
         }
 
         // Pairs and double pairs
         if (pairs != null) {
             Rank bestPair = Collections.max(pairs, RankComparator.STRONG_ACE);
-            return new Hand(pairs.size() >= 2 ? HandType.DOUBLE_PAIR : HandType.PAIR, bestPair);
+            if (pairs.size() >= 2) {
+                Rank bestSubPair = Collections.max(pairs.stream().filter(r -> r != bestPair).toList(), RankComparator.STRONG_ACE);
+                return new Hand(HandType.DOUBLE_PAIR, Algorithms.listWithTwoFirst(bestPair, bestSubPair, this.discriminatorRanks(rankOccurrences)));
+            }
+            return new Hand(HandType.PAIR, Algorithms.listWithFirst(bestPair, this.discriminatorRanks(rankOccurrences)));
         }
 
         // Highest card
-        Rank highestRank = Collections.max(ranks, RankComparator.STRONG_ACE);
-        return new Hand(HandType.HIGH_CARD, highestRank);
+        return new Hand(HandType.HIGH_CARD, ranks);
     }
 
     private Suit flushSuit() {
@@ -144,6 +150,12 @@ public class Player {
             previousCardRank = currentCardRank;
         }
         return modifiableCards.get(lastIndex).getRank();
+    }
+
+    private List<Rank> discriminatorRanks(Map<Integer, Set<Rank>> occurrences) {
+        List<Rank> result = new ArrayList<>(occurrences.get(1));
+        result.sort(RankComparator.STRONG_ACE);
+        return result;
     }
 
     public List<Card> getCards() {

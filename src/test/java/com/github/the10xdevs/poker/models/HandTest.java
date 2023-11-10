@@ -3,6 +3,8 @@ package com.github.the10xdevs.poker.models;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -16,11 +18,11 @@ class HandTest {
 
     @BeforeEach
     void SetUp() {
-        h1 = new Hand(HandType.PAIR, Rank.ACE);
-        h2 = new Hand(HandType.HIGH_CARD, Rank.FOUR);
-        h3 = new Hand(HandType.DOUBLE_PAIR, Rank.SIX);
-        h4 = new Hand(HandType.THREE_OF_A_KIND, Rank.FIVE);
-        h5 = new Hand(HandType.FOUR_OF_A_KIND, Rank.NINE);
+        h1 = new Hand(HandType.PAIR, List.of(Rank.ACE));
+        h2 = new Hand(HandType.HIGH_CARD, List.of(Rank.FOUR));
+        h3 = new Hand(HandType.DOUBLE_PAIR, List.of(Rank.SIX, Rank.THREE));
+        h4 = new Hand(HandType.THREE_OF_A_KIND, List.of(Rank.FIVE));
+        h5 = new Hand(HandType.FOUR_OF_A_KIND, List.of(Rank.NINE));
 
 
     }
@@ -34,11 +36,11 @@ class HandTest {
 
     @Test
     void getHighestRankTest() {
-        assertEquals(14, h1.getHighestRank().getNumberRank());
-        assertEquals(4, h2.getHighestRank().getNumberRank());
-        assertEquals(6, h3.getHighestRank().getNumberRank());
-        assertEquals(5, h4.getHighestRank().getNumberRank());
-        assertEquals(9, h5.getHighestRank().getNumberRank());
+        assertEquals(14, h1.getHighestRanks().get(0).getNumberRank());
+        assertEquals(4, h2.getHighestRanks().get(0).getNumberRank());
+        assertEquals(6, h3.getHighestRanks().get(0).getNumberRank());
+        assertEquals(5, h4.getHighestRanks().get(0).getNumberRank());
+        assertEquals(9, h5.getHighestRanks().get(0).getNumberRank());
     }
 
     @Test
@@ -53,8 +55,8 @@ class HandTest {
 
     @Test
     void compareToSameScore() {
-        Hand h1 = new Hand(HandType.PAIR, Rank.ACE);
-        Hand h2 = new Hand(HandType.PAIR, Rank.FOUR);
+        Hand h1 = new Hand(HandType.PAIR, List.of(Rank.ACE));
+        Hand h2 = new Hand(HandType.PAIR, List.of(Rank.FOUR));
 
         assertTrue(h1.compareTo(h2) > 0);
     }
@@ -63,7 +65,7 @@ class HandTest {
     void toStringTest() {
         assertEquals("paire de as", h1.toString());
         assertEquals("carte haute par le 4", h2.toString());
-        assertEquals("double paire de 6 par les xxx", h3.toString());
+        assertEquals("double paire de 6 par les 3", h3.toString());
         assertEquals("brelan de 5", h4.toString());
         assertEquals("carré de 9", h5.toString());
     }

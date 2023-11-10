@@ -62,4 +62,19 @@ public class Algorithms {
 
         return set.size() < arr.size();
     }
+
+    public static <T> List<T> listWithFirst(T firstElement, List<T> rest) {
+        ArrayList<T> resultingList = new ArrayList<>();
+        resultingList.add(firstElement);
+        resultingList.addAll(rest);
+        return resultingList;
+    }
+
+    public static <T> List<T> listWithTwoFirst(T firstElement, T secondElement, List<T> rest) {
+        ArrayList<T> resultingList = new ArrayList<>();
+        resultingList.add(firstElement);
+        resultingList.add(secondElement);
+        resultingList.addAll(rest);
+        return resultingList;
+    }
 }
