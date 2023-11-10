@@ -63,10 +63,10 @@ public enum Rank implements Comparable<Rank> {
     @Override
     public String toString() {
         return switch (this) {
-            case ACE -> "A";
-            case KING -> "R";
-            case QUEEN -> "D";
-            case JACK -> "V";
+            case ACE -> "as";
+            case KING -> "roi";
+            case QUEEN -> "dame";
+            case JACK -> "valet";
             case TEN -> "10";
             case NINE -> "9";
             case EIGHT -> "8";

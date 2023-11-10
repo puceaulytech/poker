@@ -41,16 +41,16 @@ class RankTest {
     @Test
     void testToString() {
         String str1 = Rank.ACE.toString();
-        assertEquals("A", str1);
+        assertEquals("as", str1);
 
         String str2 = Rank.KING.toString();
-        assertEquals("R", str2);
+        assertEquals("roi", str2);
 
         String str3 = Rank.QUEEN.toString();
-        assertEquals("D", str3);
+        assertEquals("dame", str3);
 
         String str4 = Rank.JACK.toString();
-        assertEquals("V", str4);
+        assertEquals("valet", str4);
 
         String str5 = Rank.TWO.toString();
         assertEquals("2", str5);

@@ -40,7 +40,14 @@ public class Hand implements Comparable<Hand> {
 
     @Override
     public String toString() {
-        if (this.suit == null) return this.type.toString() + " de " + this.highestRank.toString();
-        return this.type + " au " + this.highestRank + " de " + this.suit;
+        return this.type + " " + switch (this.type) {
+            case STRAIGHT_FLUSH -> String.format("au %s à %s", this.highestRank, this.suit);
+            case FULL_HOUSE -> String.format("aux %s par les xxx", this.highestRank);
+            case FLUSH -> String.format("au %s de %s", this.highestRank, this.suit);
+            case STRAIGHT -> String.format("au %s", this.highestRank);
+            case DOUBLE_PAIR -> String.format("de %s par les xxx", this.highestRank);
+            case HIGH_CARD -> String.format("par le %s", this.highestRank);
+            default -> String.format("de %s", this.highestRank);
+        };
     }
 }

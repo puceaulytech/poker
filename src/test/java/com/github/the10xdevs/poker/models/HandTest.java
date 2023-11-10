@@ -61,11 +61,10 @@ class HandTest {
 
     @Test
     void toStringTest() {
-        assertEquals("paire de A", h1.toString());
-        assertEquals("carte haute de 4", h2.toString());
-        assertEquals("double paire de 6", h3.toString());
+        assertEquals("paire de as", h1.toString());
+        assertEquals("carte haute par le 4", h2.toString());
+        assertEquals("double paire de 6 par les xxx", h3.toString());
         assertEquals("brelan de 5", h4.toString());
         assertEquals("carré de 9", h5.toString());
-
     }
 }
