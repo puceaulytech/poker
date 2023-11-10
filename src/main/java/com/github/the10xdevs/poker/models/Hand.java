@@ -40,6 +40,7 @@ public class Hand implements Comparable<Hand> {
 
     @Override
     public String toString() {
-        return this.type.toString() + " de " + this.highestRank.toString();
+        if (this.suit == null) return this.type.toString() + " de " + this.highestRank.toString();
+        return this.type + " au " + this.highestRank + " de " + this.suit;
     }
 }

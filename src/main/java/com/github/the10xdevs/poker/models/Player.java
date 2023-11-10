@@ -8,7 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.*;
 
-public class Player implements Comparable<Player> {
+public class Player {
     private final List<Card> cards;
 
     public Player(List<Card> cards) {
@@ -141,13 +141,5 @@ public class Player implements Comparable<Player> {
             previousCardRank = currentCardRank;
         }
         return modifiableCards.get(lastIndex).getRank();
-    }
-
-    @Override
-    public int compareTo(Player other) {
-        Hand thisHand = this.computeBestHand();
-        Hand otherHand = other.computeBestHand();
-
-        return thisHand.compareTo(otherHand);
     }
 }
