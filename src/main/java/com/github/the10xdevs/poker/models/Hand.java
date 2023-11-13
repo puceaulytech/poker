@@ -1,6 +1,7 @@
 package com.github.the10xdevs.poker.models;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Hand implements Comparable<Hand> {
     private final List<Rank> highestRanks;
@@ -28,6 +29,20 @@ public class Hand implements Comparable<Hand> {
 
     public Suit getSuit() {
         return suit;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(highestRanks, suit, type);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other instanceof Hand otherHand) {
+            return this.suit == otherHand.suit && this.type == otherHand.type && this.highestRanks.equals(otherHand.highestRanks);
+        }
+
+        return false;
     }
 
     @Override
